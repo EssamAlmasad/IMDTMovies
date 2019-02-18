@@ -7,27 +7,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-# Remember to include a 'magic word' so that your visualizations are plotted
-#   inline with the notebook. See this page for more:
-#   http://ipython.readthedocs.io/en/stable/interactive/magics.html
-% matplotlib inline
-
-Data Wrangling
-General Properties
-# Load your data and print out a few lines. Perform operations to inspect data
-movies=pd.read_csv('tmdb-movies.csv')
-movies.head(5)
-#   types and look for instances of missing or possibly errant data.
-id	imdb_id	popularity	budget	revenue	original_title	cast	homepage	director	tagline	...	overview	runtime	genres	production_companies	release_date	vote_count	vote_average	release_year	budget_adj	revenue_adj
-0	135397	tt0369610	32.985763	150000000	1513528810	Jurassic World	Chris Pratt|Bryce Dallas Howard|Irrfan Khan|Vi...	http://www.jurassicworld.com/	Colin Trevorrow	The park is open.	...	Twenty-two years after the events of Jurassic ...	124	Action|Adventure|Science Fiction|Thriller	Universal Studios|Amblin Entertainment|Legenda...	06/09/2015	5562	6.5	2015	137999939.3	1.392446e+09
-1	76341	tt1392190	28.419936	150000000	378436354	Mad Max: Fury Road	Tom Hardy|Charlize Theron|Hugh Keays-Byrne|Nic...	http://www.madmaxmovie.com/	George Miller	What a Lovely Day.	...	An apocalyptic story set in the furthest reach...	120	Action|Adventure|Science Fiction|Thriller	Village Roadshow Pictures|Kennedy Miller Produ...	5/13/15	6185	7.1	2015	137999939.3	3.481613e+08
-2	262500	tt2908446	13.112507	110000000	295238201	Insurgent	Shailene Woodley|Theo James|Kate Winslet|Ansel...	http://www.thedivergentseries.movie/#insurgent	Robert Schwentke	One Choice Can Destroy You	...	Beatrice Prior must confront her inner demons ...	119	Adventure|Science Fiction|Thriller	Summit Entertainment|Mandeville Films|Red Wago...	3/18/15	2480	6.3	2015	101199955.5	2.716190e+08
-3	140607	tt2488496	11.173104	200000000	2068178225	Star Wars: The Force Awakens	Harrison Ford|Mark Hamill|Carrie Fisher|Adam D...	http://www.starwars.com/films/star-wars-episod...	J.J. Abrams	Every generation has a story.	...	Thirty years after defeating the Galactic Empi...	136	Action|Adventure|Science Fiction|Fantasy	Lucasfilm|Truenorth Productions|Bad Robot	12/15/15	5292	7.5	2015	183999919.0	1.902723e+09
-4	168259	tt2820852	9.335014	190000000	1506249360	Furious 7	Vin Diesel|Paul Walker|Jason Statham|Michelle ...	http://www.furious7.com/	James Wan	Vengeance Hits Home	...	Deckard Shaw seeks revenge against Dominic Tor...	137	Action|Crime|Thriller	Universal Pictures|Original Film|Media Rights ...	04/01/2015	2947	7.3	2015	174799923.1	1.385749e+09
-5 rows × 21 columns
-
-Data Cleaning (Removing all the unnecessary columns from the dataset !)
 # After discussing the structure of the data and any problems that need to be
 #   cleaned, perform those cleaning steps in the second part of this section.
 movies.drop(['imdb_id','homepage','tagline','keywords','production_companies','cast','overview','budget','revenue'],axis=1, inplace=True)
@@ -441,33 +420,6 @@ release_year
 1985    6.177064
 1981    6.165854
 1980    6.160256
-Name: vote_average, dtype: float64
-In the visualization below:
-- We will visual the relationship between movies & the average rating on a yearly base.
-- This will help to find out what are the highest rating years in movies industry.
-top_year_vote.plot(x='release_year', y='vote_average',kind='bar', figsize=(15,10), title='Highest Rating Movies by Years', legend=True)
-plt.xlabel('Year')
-plt.ylabel('Voting Average')
-Text(0,0.5,'Voting Average')
-
-In the visualization above:
-- Older movies are dictating this visual espacially the 70s & 60s movies.
-- The AVG was hovering in 6 out of 10 at best 1973 6.7/10.
-Research Question 2 (What is the relationship between revenue and rating?)
-In Q2 we will see the relationship between revenue & rating
-The visual below will show either revenue & rating toghterly grow or they decline each other.
-# Continue to explore the data to address your additional research
-#   questions. Add more headers as needed if you have more questions to
-#   investigate.
-movies.plot(x='vote_average', y='revenue_adj', kind='scatter',figsize=(15,10))
-plt.title('Rating vs Revenue')
-plt.xlabel('Rating')
-plt.ylabel('Revenue')
-Text(0,0.5,'Revenue')
-
-From the Visualization above:
-- Higher vote ratings are associated with high revenues.
-- Movies with revenue over 1B dollars are likely to get over 7 out of 10
 
 Conclusions
 In Quastion 1, part 1(The most profitable years in movies industry):
